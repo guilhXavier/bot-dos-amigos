@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const auth = require('../auth/auth.json');
+const auth = require('./auth/auth.json');
 const ytdl = require('ytdl-core');
 const queue = new Map();
 const { prefix, token } = auth;
@@ -97,14 +97,14 @@ function stop(msg, serverQueue) {
 	if (!msg.member.voiceChannel)
 		return msg.channel.send('Vc tem que ta no canal pra parar a musica');
 	serverQueue.songs = [];
-	serverQueue.connection.dispatcher.end();
+	setTimeout(serverQueue.connection.dispatcher.end(), 60000);
 }
 
 function play(guild, song) {
 	const serverQueue = queue.get(guild.id);
 
 	if (!song) {
-		serverQueue.voiceChannel.leave();
+		setTimeout(serverQueue.voiceChannel.leave(), 60000);
 		queue.delete(guild.id);
 		return;
 	}
