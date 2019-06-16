@@ -1,0 +1,15 @@
+{
+  "name": "discord-bot-dos-amigos",
+  "version": "1.0.0",
+  "description": "Bot do server dos amigos ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Guilherme Xavier",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "ytdl-core": "^0.29.2"
+  }
+}
