@@ -1,1 +1,1 @@
-Coisas pro futuro: remindme, previsao do tempo, fato aleatorio, buscar video pelo nome
+Coisas pro futuro: previsao do tempo, fato aleatorio, buscar video pelo nome

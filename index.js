@@ -3,6 +3,7 @@ const client = new Discord.Client();
 const auth = require('./auth/auth.json');
 const ytdl = require('ytdl-core');
 const queue = new Map();
+const ms = require('ms');
 const { prefix, token } = auth;
 
 client.on('ready', () => {
@@ -24,10 +25,29 @@ client.on('message', async msg => {
 		return;
 	} else if (msg.content.startsWith(`${prefix}stop`)) {
 		stop(msg, serverQueue);
+	} else if (msg.content.startsWith(`${prefix}remindme`)) {
+		remindMe(msg);
 	} else {
 		msg.channel.send('Escreveu o bagulho errado irmao');
 	}
 });
+
+// $remindme 5s mandar email
+function remindMe(msg) {
+	const args = msg.content.split(' ');
+	msg.reply(`Ok, vou te lembrar em ${args[1]}`);
+
+	args.splice(0, 1);
+
+	const time = args[0];
+	args.splice(0, 1);
+
+	const note = args.join(' ');
+
+	setTimeout(() => {
+		msg.reply(note);
+	}, ms(time));
+}
 
 async function execute(msg, serverQueue) {
 	const args = msg.content.split(' ');
