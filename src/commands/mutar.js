@@ -1,5 +1,5 @@
 // $mutar @NickBola#123 por ser inconveniente
-export const mutar = (msg) => {
+exports.mutar = (msg) => {
   const args = msg.content.split(' ');
 
   const bin = args.splice(0, 2);
@@ -13,7 +13,7 @@ export const mutar = (msg) => {
   return msg.channel.send(`${bin[1]} foi mutado por ${reason}`);
 };
 
-export const desmutar = (msg) => {
+exports.desmutar = (msg) => {
   const args = msg.content.split(' ');
 
   const bin = args.splice(0, 2);

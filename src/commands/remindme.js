@@ -1,7 +1,7 @@
 const ms = require('ms');
 
 // $remindme 5s mandar email
-const remindMe = (msg) => {
+exports.remindMe = (msg) => {
   const args = msg.content.split(' ');
   msg.reply(`Ok, vou te lembrar em ${args[1]}`);
 
@@ -16,5 +16,3 @@ const remindMe = (msg) => {
     msg.reply(note);
   }, ms(time));
 };
-
-export default remindMe;

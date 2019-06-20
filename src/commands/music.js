@@ -26,7 +26,7 @@ function play(guild, song) {
   dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
 }
 
-export const execute = async (msg, serverQueue) => {
+exports.execute = async (msg, serverQueue) => {
   const args = msg.content.split(' ');
 
   const { voiceChannel } = msg.member;
@@ -80,13 +80,13 @@ export const execute = async (msg, serverQueue) => {
   }
 };
 
-export const skip = (msg, serverQueue) => {
+exports.skip = (msg, serverQueue) => {
   if (!msg.member.voiceChannel) return msg.channel.send('Vc tem q ta no canal pra estragar a festa dos outros');
   if (!serverQueue) return msg.channel.send('N tem musica pra skipar');
   serverQueue.connection.dispatcher.end();
 };
 
-export const stop = (msg, serverQueue) => {
+exports.stop = (msg, serverQueue) => {
   if (!msg.member.voiceChannel) return msg.channel.send('Vc tem que ta no canal pra parar a musica');
   serverQueue.songs = [];
   setTimeout(() => serverQueue.connection.dispatcher.end(), 60000);
