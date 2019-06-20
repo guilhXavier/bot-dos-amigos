@@ -1,27 +1,29 @@
 {
-  "name": "discord-bot-dos-amigos",
-  "version": "1.0.0",
-  "description": "Bot do server dos amigos ",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Guilherme Xavier",
-  "license": "ISC",
-  "dependencies": {
-    "discord.js": "^11.5.1",
-    "ffmpeg": "0.0.4",
-    "ms": "^2.1.2",
-    "opusscript": "0.0.6",
-    "ytdl-core": "^0.29.2"
-  },
-  "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.17.3",
-    "eslint-plugin-node": "^9.1.0",
-    "eslint-plugin-promise": "^4.1.1",
-    "eslint-plugin-standard": "^4.0.0"
-  }
+	"name": "discord-bot-dos-amigos",
+	"version": "1.0.0",
+	"description": "Bot do server dos amigos ",
+	"main": "index.js",
+	"scripts": {
+		"dev": "nodemon index.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Guilherme Xavier",
+	"license": "ISC",
+	"dependencies": {
+		"discord.js": "^11.5.1",
+		"ffmpeg": "0.0.4",
+		"ms": "^2.1.2",
+		"nodemon": "^1.19.1",
+		"opusscript": "0.0.6",
+		"ytdl-core": "^0.29.2"
+	},
+	"devDependencies": {
+		"eslint": "^5.16.0",
+		"eslint-config-airbnb-base": "^13.1.0",
+		"eslint-config-standard": "^12.0.0",
+		"eslint-plugin-import": "^2.17.3",
+		"eslint-plugin-node": "^9.1.0",
+		"eslint-plugin-promise": "^4.1.1",
+		"eslint-plugin-standard": "^4.0.0"
+	}
 }

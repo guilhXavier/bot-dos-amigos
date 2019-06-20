@@ -10,6 +10,7 @@ const { prefix, devtoken } = config;
 const { mutar, desmutar } = require('./src/commands/mutar');
 const { execute, skip, stop } = require('./src/commands/music');
 const { remindMe } = require('./src/commands/remindme');
+const { kick } = require('./src/commands/kick');
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}`);
@@ -37,6 +38,8 @@ client.on('message', async (msg) => {
 		&& msg.member.hasPermission('MUTE_MEMBERS')
   ) {
     desmutar(msg);
+  } else if (msg.content.startsWith(`${prefix}kick`) && msg.member.hasPermission('KICK_MEMBERS')) {
+    kick(msg);
   } else {
     msg.channel.send('Escreveu o bagulho errado irmao');
   }
