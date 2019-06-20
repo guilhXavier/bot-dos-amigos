@@ -1,17 +1,15 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable consistent-return */
-/* eslint-disable no-tabs */
-/* eslint-disable no-use-before-define */
 const Discord = require('discord.js');
 
 const client = new Discord.Client();
-const ytdl = require('ytdl-core');
-
 const queue = new Map();
-const ms = require('ms');
-const auth = require('./auth/auth.json');
 
-const { prefix, token } = auth;
+const config = require('./config/config.json');
+
+const { prefix } = config;
+
+const { mutar, desmutar } = require('./src/commands/mutar');
+const { execute, skip, stop } = require('./src/commands/music');
+const { remindMe } = require('./src/commands/remindme');
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}`);
@@ -43,140 +41,5 @@ client.on('message', async (msg) => {
     msg.channel.send('Escreveu o bagulho errado irmao');
   }
 });
-// $mutar @NickBola#123 por ser inconveniente
-function mutar(msg) {
-  const args = msg.content.split(' ');
 
-  const bin = args.splice(0, 2);
-
-  const reason = args.join(' ');
-
-  const meliante = msg.mentions.members.first(1)[0];
-
-  meliante.setMute(true, reason).catch(err => console.log(err));
-
-  return msg.channel.send(`${bin[1]} foi mutado por ${reason}`);
-}
-
-function desmutar(msg) {
-  const args = msg.content.split(' ');
-
-  const bin = args.splice(0, 2);
-
-  const reason = args.join(' ');
-
-  const meliante = msg.mentions.members.first(1)[0];
-
-  meliante.setMute(false, reason).catch(err => console.log(err));
-
-  return msg.channel.send(`${bin[1]} foi desmutado por ${reason}`);
-}
-
-// $remindme 5s mandar email
-function remindMe(msg) {
-  const args = msg.content.split(' ');
-  msg.reply(`Ok, vou te lembrar em ${args[1]}`);
-
-  args.splice(0, 1);
-
-  const time = args[0];
-  args.splice(0, 1);
-
-  const note = args.join(' ');
-
-  setTimeout(() => {
-    msg.reply(note);
-  }, ms(time));
-}
-
-async function execute(msg, serverQueue) {
-  const args = msg.content.split(' ');
-
-  const { voiceChannel } = msg.member;
-
-  if (!voiceChannel) return msg.channel.send('Vc precisa estar no canal pra tocar musica');
-
-  const permissions = voiceChannel.permissionsFor(msg.client.user);
-
-  if (!permissions.has('CONNECT') || !permissions.has('SPEAK')) {
-    return msg.channel.send('Eu preciso de permissao pra isso :(');
-  }
-
-  const songInfo = await ytdl.getInfo(args[1]);
-
-  const song = {
-    title: songInfo.title,
-    url: songInfo.video_url,
-  };
-
-  if (!serverQueue) {
-    const queueConstruct = {
-      textChannel: msg.channel,
-      voiceChannel,
-      connection: null,
-      songs: [],
-      volume: 5,
-      playing: true,
-    };
-
-    queue.set(msg.guild.id, queueConstruct);
-
-    queueConstruct.songs.push(song);
-
-    try {
-      const connection = await voiceChannel.join();
-
-      queueConstruct.connection = connection;
-
-      play(msg.guild, queueConstruct.songs[0]);
-    } catch (error) {
-      console.log(error);
-
-      queue.delete(msg.guild.id);
-
-      return msg.channel.send(error);
-    }
-  } else {
-    serverQueue.songs.push(song);
-    console.log(serverQueue.songs);
-    return msg.channel.send(`${song.title} foi adicionada a lista de espera`);
-  }
-}
-
-function skip(msg, serverQueue) {
-  if (!msg.member.voiceChannel) return msg.channel.send('Vc tem q ta no canal pra estragar a festa dos outros');
-  if (!serverQueue) return msg.channel.send('N tem musica pra skipar');
-  serverQueue.connection.dispatcher.end();
-}
-
-function stop(msg, serverQueue) {
-  if (!msg.member.voiceChannel) return msg.channel.send('Vc tem que ta no canal pra parar a musica');
-  serverQueue.songs = [];
-  setTimeout(() => serverQueue.connection.dispatcher.end(), 60000);
-}
-
-function play(guild, song) {
-  const serverQueue = queue.get(guild.id);
-
-  if (!song) {
-    setTimeout(() => serverQueue.voiceChannel.leave(), 60000);
-    queue.delete(guild.id);
-    return;
-  }
-
-  const dispatcher = serverQueue.connection
-    .playStream(ytdl(song.url))
-    .on('end', () => {
-      console.log('cabo a musica');
-
-      serverQueue.songs.shift();
-
-      play(guild, serverQueue.songs[0]);
-    })
-    .on('error', (error) => {
-      console.error(error);
-    });
-  dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
-}
-
-client.login(token);
+client.login(process.env.BOT_TOKEN);
