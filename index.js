@@ -42,4 +42,4 @@ client.on('message', async (msg) => {
   }
 });
 
-client.login('yl-6NRCr9Leej10W83EsVAhfe5yW1Kn0');
+client.login(process.env.BOT_TOKEN).catch(err => console.log(err));
