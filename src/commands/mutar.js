@@ -13,6 +13,7 @@ exports.mutar = (msg) => {
 
 exports.desmutar = (msg) => {
   const args = msg.content.split(' ');
+  args.splice(0, 2);
 
   const reason = args.join(' ');
 

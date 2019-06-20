@@ -11,6 +11,7 @@ const { mutar, desmutar } = require('./src/commands/mutar');
 const { execute, skip, stop } = require('./src/commands/music');
 const { remindMe } = require('./src/commands/remindme');
 const { kick } = require('./src/commands/kick');
+const { ban } = require('./src/commands/ban');
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}`);
@@ -40,6 +41,8 @@ client.on('message', async (msg) => {
     desmutar(msg);
   } else if (msg.content.startsWith(`${prefix}kick`) && msg.member.hasPermission('KICK_MEMBERS')) {
     kick(msg);
+  } else if (msg.content.startsWith(`${prefix}ban`) && msg.member.hasPermission('BAN_MEMBERS')) {
+    ban(msg);
   } else {
     msg.channel.send('Escreveu o bagulho errado irmao');
   }

@@ -1,6 +1,7 @@
 // $kick @NickBola#233 dar mto e o cu
 exports.kick = (msg) => {
   const args = msg.content.split(' ');
+  args.splice(0, 2);
 
   const reason = args.join(' ');
 
