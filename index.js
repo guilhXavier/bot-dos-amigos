@@ -5,7 +5,7 @@ const queue = new Map();
 
 const config = require('./config/config.json');
 
-const { prefix } = config;
+const { prefix, devtoken } = config;
 
 const { mutar, desmutar } = require('./src/commands/mutar');
 const { execute, skip, stop } = require('./src/commands/music');
@@ -42,4 +42,4 @@ client.on('message', async (msg) => {
   }
 });
 
-client.login(process.env.BOT_TOKEN).catch(err => console.log(err));
+client.login(devtoken).catch(err => console.log(err));
