@@ -12,6 +12,7 @@ const { execute, skip, stop } = require('./src/commands/music');
 const { remindMe } = require('./src/commands/remindme');
 const { kick } = require('./src/commands/kick');
 const { ban } = require('./src/commands/ban');
+const { addToRole, removeFromRole, createARole } = require('./src/commands/role');
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}`);
@@ -43,6 +44,21 @@ client.on('message', async (msg) => {
     kick(msg);
   } else if (msg.content.startsWith(`${prefix}ban`) && msg.member.hasPermission('BAN_MEMBERS')) {
     ban(msg);
+  } else if (
+    msg.content.startsWith(`${prefix}addToRole`)
+		&& msg.member.hasPermission('MANAGE_ROLES')
+  ) {
+    addToRole(msg);
+  } else if (
+    msg.content.startsWith(`${prefix}removeFromRole`)
+		&& msg.member.hasPermission('MANAGE_ROLES')
+  ) {
+    removeFromRole(msg);
+  } else if (
+    msg.content.startsWith(`${prefix}createARole`)
+		&& msg.member.hasPermission('MANAGE_ROLES')
+  ) {
+    createARole(msg);
   } else {
     msg.channel.send('Escreveu o bagulho errado irmao');
   }
