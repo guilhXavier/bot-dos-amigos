@@ -88,6 +88,6 @@ exports.skip = (msg, serverQueue) => {
 
 exports.stop = (msg, serverQueue) => {
   if (!msg.member.voiceChannel) return msg.channel.send('Vc tem que ta no canal pra parar a musica');
-  serverQueue.songs = [];
+  serverQueue.songs.splice(0, Number.MAX_VALUE);
   setTimeout(() => serverQueue.connection.dispatcher.end(), 60000);
 };
