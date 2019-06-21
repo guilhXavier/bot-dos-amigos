@@ -13,7 +13,7 @@ const { remindMe } = require('./src/commands/remindme');
 const { kick } = require('./src/commands/kick');
 const { ban } = require('./src/commands/ban');
 const { addToRole, removeFromRole, createARole } = require('./src/commands/role');
-const { help } = require('./src/commands/help');
+const { help, helpmod } = require('./src/commands/help');
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}`);
@@ -33,7 +33,8 @@ client.on('message', async (msg) => {
 
   if (!msg.content.startsWith(prefix)) return;
 
-  if (msg.content.startsWith(`${prefix}help`)) help(msg);
+  if (msg.content.startsWith(`${prefix}helpmod`)) return helpmod(msg);
+  if (msg.content.startsWith(`${prefix}help`)) return help(msg);
 
   if (msg.content.startsWith(`${prefix}play`)) {
     client.music.bot.playFunction(msg, suffix);

@@ -11,5 +11,11 @@ exports.kick = (msg) => {
 
   meliante.kick(reason).catch(err => console.log(err));
 
-  return msg.channel.send(`${meliante.displayName} foi kickado por ${reason}`);
+  return msg.channel.send({
+    embed: {
+      color: 9699539,
+      title: 'Unmute',
+      description: `${meliante.displayName} foi kickado por ${reason || 'alguma razao'}`,
+    },
+  });
 };

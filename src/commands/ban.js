@@ -11,5 +11,11 @@ exports.ban = (msg) => {
 
   meliante.ban(reason).catch(err => console.log(err));
 
-  return msg.channel.send(`${meliante.displayName} foi banido por ${reason}`);
+  return msg.channel.send({
+    embed: {
+      color: 9699539,
+      title: 'Ban',
+      description: `${meliante.displayName} foi banido por ${reason || 'alguma razao'}`,
+    },
+  });
 };

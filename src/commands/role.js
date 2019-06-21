@@ -10,7 +10,13 @@ exports.addToRole = (msg) => {
 
     msg.member.addRole(role);
 
-    return msg.channel.send(`${msg.member} foi adicionado ao cargo ${role.name}`);
+    return msg.channel.send({
+      embed: {
+        color: 9699539,
+        title: 'AddToRole',
+        description: `${msg.member} foi adicionado ao cargo ${role.name}`,
+      },
+    });
   }
 
   args.splice(0, 2);
@@ -21,7 +27,13 @@ exports.addToRole = (msg) => {
 
   alvo.addRole(role);
 
-  return msg.channel.send(`${alvo.displayName} foi adicionado ao cargo ${role.name}`);
+  return msg.channel.send({
+    embed: {
+      color: 9699539,
+      title: 'AddToRole',
+      description: `${alvo.displayName} foi adicionado ao cargo ${role.name}`,
+    },
+  });
 };
 
 // $removeRole @NickBola#233 bott
@@ -36,7 +48,13 @@ exports.removeFromRole = (msg) => {
 
     msg.member.removeRole(role);
 
-    return msg.channel.send(`${msg.member} foi removido do cargo ${role.name}`);
+    return msg.channel.send({
+      embed: {
+        color: 9699539,
+        title: 'RemoveFromRole',
+        description: `${msg.member} foi removido do cargo ${role.name}`,
+      },
+    });
   }
 
   args.splice(0, 2);
@@ -47,7 +65,13 @@ exports.removeFromRole = (msg) => {
 
   alvo.removeRole(role);
 
-  return msg.channel.send(`${alvo.displayName} foi removido do cargo ${role.name}`);
+  return msg.channel.send({
+    embed: {
+      color: 9699539,
+      title: 'RemoveFromRole',
+      description: `${alvo.displayName} foi adicionado ao cargo ${role.name}`,
+    },
+  });
 };
 
 // $createRole super cool | 9400D3 | separado | mencionavel
@@ -72,7 +96,13 @@ exports.createARole = async (msg) => {
       mentionable,
     });
 
-    return msg.channel.send(`Novo cargo ${name} criado`);
+    return msg.channel.send({
+      embed: {
+        color: 9699539,
+        title: 'CreateARole',
+        description: `Cargo ${name} criado`,
+      },
+    });
   } catch (error) {
     return console.log(error);
   }
