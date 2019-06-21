@@ -4,8 +4,6 @@ const client = new Discord.Client();
 
 client.music = require('discord.js-musicbot-addon');
 
-const { devtoken } = require('./config/config.json');
-
 const { prefix } = require('./config/config.json');
 
 const { mutar, desmutar } = require('./src/commands/mutar');
@@ -79,4 +77,4 @@ client.on('message', async (msg) => {
   }
 });
 
-client.login(devtoken).catch(err => console.log(err));
+client.login(process.env.BOT_TOKEN).catch(err => console.log(err));
