@@ -1,1 +1,1 @@
-_REFAZER A COISA DA MUSICA PELO AMOR DE DEUS_
+Musica ta funcionando bem agora, so falta deixar as coisas bonitinhas e lancar
