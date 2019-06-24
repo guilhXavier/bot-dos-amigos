@@ -6,10 +6,10 @@ const client = new Discord.Client();
 
 client.music = require('discord.js-musicbot-addon');
 
-const { prefix, devtoken, youtubeKey } = require('./config/config.json');
+const { PREFIX, BOT_TOKEN, YOUTUBEAPI } = require('./config/config.json');
 
 client.music.start(client, {
-  youtubeKey,
+  youtubeKey: YOUTUBEAPI,
   anyoneCanSkip: true,
 });
 
@@ -23,7 +23,7 @@ client.on('message', async (msg) => {
 
   if (msg.author.bot) return;
 
-  if (!msg.content.startsWith(prefix)) return;
+  if (!msg.content.startsWith(PREFIX)) return;
 
   try {
     switch (cmd) {
@@ -56,4 +56,4 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}`);
 });
 
-client.login(devtoken).catch(err => console.log(err));
+client.login(BOT_TOKEN).catch(err => console.log(err));
