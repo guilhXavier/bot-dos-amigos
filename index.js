@@ -3,13 +3,12 @@
 const Discord = require('discord.js');
 
 const client = new Discord.Client();
+const prefix = process.env.PREFIX;
 
 client.music = require('discord.js-musicbot-addon');
 
-const { prefix, devtoken, youtubeKey } = require('./config/config.json');
-
 client.music.start(client, {
-  youtubeKey,
+  youtubeKey: process.env.YOUTUBEAPI,
   anyoneCanSkip: true,
 });
 
@@ -56,4 +55,4 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}`);
 });
 
-client.login(devtoken).catch(err => console.log(err));
+client.login(process.env.BOT_TOKEN).catch(err => console.log(err));
