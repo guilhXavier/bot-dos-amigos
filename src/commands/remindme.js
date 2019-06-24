@@ -3,7 +3,7 @@ const ms = require('ms');
 const { RichEmbed } = require('discord.js');
 
 // $remindme 5s mandar email
-exports.remindMe = (msg) => {
+exports.run = (msg) => {
   const args = msg.content.split(' ');
 
   const embed = new RichEmbed()

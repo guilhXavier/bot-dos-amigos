@@ -1,5 +1,5 @@
 // $ban @NickBola#233 ser inconveniente
-exports.ban = (msg) => {
+exports.run = (msg) => {
   const args = msg.content.split(' ');
   args.splice(0, 2);
 
