@@ -10,7 +10,6 @@ const { GOOGLEAPI, PREFIX, BOT_TOKEN } = checkConfig
   : process.env;
 
 const client = new Discord.Client();
-const prefix = process.env.PREFIX;
 
 client.music = require('discord.js-musicbot-addon');
 
@@ -62,8 +61,4 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}`);
 });
 
-<<<<<<< HEAD
-client.login(process.env.BOT_TOKEN).catch(err => console.log(err));
-=======
 client.login(BOT_TOKEN).catch(err => console.log(err));
->>>>>>> dev
