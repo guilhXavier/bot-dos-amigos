@@ -1,6 +1,13 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
 const Discord = require('discord.js');
+const fs = require('fs');
+
+const checkConfig = fs.existsSync('./config/config.json');
+
+const { GOOGLEAPI, PREFIX, BOT_TOKEN } = checkConfig
+  ? require('./config/config.json')
+  : process.env;
 
 const client = new Discord.Client();
 const prefix = process.env.PREFIX;
@@ -8,7 +15,7 @@ const prefix = process.env.PREFIX;
 client.music = require('discord.js-musicbot-addon');
 
 client.music.start(client, {
-  youtubeKey: process.env.YOUTUBEAPI,
+  youtubeKey: GOOGLEAPI,
   anyoneCanSkip: true,
 });
 
@@ -22,7 +29,7 @@ client.on('message', async (msg) => {
 
   if (msg.author.bot) return;
 
-  if (!msg.content.startsWith(prefix)) return;
+  if (!msg.content.startsWith(PREFIX)) return;
 
   try {
     switch (cmd) {
@@ -55,4 +62,8 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}`);
 });
 
+<<<<<<< HEAD
 client.login(process.env.BOT_TOKEN).catch(err => console.log(err));
+=======
+client.login(BOT_TOKEN).catch(err => console.log(err));
+>>>>>>> dev
