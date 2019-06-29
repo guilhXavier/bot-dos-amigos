@@ -3,12 +3,7 @@
 const Discord = require('discord.js');
 const fs = require('fs');
 
-const checkConfig = fs.access('./config/config.json', fs.F_OK, (err) => {
-  if (err) {
-    return false;
-  }
-  return true;
-});
+const checkConfig = fs.existsSync('./config/config.json');
 
 const { GOOGLEAPI, PREFIX, BOT_TOKEN } = checkConfig
   ? require('./config/config.json')
