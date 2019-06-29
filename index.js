@@ -1,15 +1,25 @@
 /* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
 const Discord = require('discord.js');
+const fs = require('fs');
+
+const checkConfig = fs.access('./config/config.json', fs.F_OK, (err) => {
+  if (err) {
+    return false;
+  }
+  return true;
+});
+
+const { GOOGLEAPI, PREFIX, BOT_TOKEN } = checkConfig
+  ? require('./config/config.json')
+  : process.env;
 
 const client = new Discord.Client();
 
 client.music = require('discord.js-musicbot-addon');
 
-const { PREFIX, BOT_TOKEN, YOUTUBEAPI } = require('./config/config.json');
-
 client.music.start(client, {
-  youtubeKey: YOUTUBEAPI,
+  youtubeKey: GOOGLEAPI,
   anyoneCanSkip: true,
 });
 

@@ -10,6 +10,7 @@
 	"author": "Guilherme Xavier",
 	"license": "ISC",
 	"dependencies": {
+		"axios": "^0.19.0",
 		"discord.js": "^11.5.1",
 		"discord.js-musicbot-addon": "^13.6.0",
 		"ffmpeg": "0.0.4",
