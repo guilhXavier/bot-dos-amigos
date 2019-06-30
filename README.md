@@ -5,21 +5,17 @@ Projetinho pessoal pro meu servidor no Discord, o Server Dos Amigos
 # Features, ou o que o bot pode fazer por mim
 
 - Para users gerais
-  _ Music player
-  _ Play
-  _ Pause
-  _ Resume
-  _ Skip
-  _ Remind Me
-  _ Busca no Google
-  _ Criar invite
+  - Music player
+  - Remind Me
+  - Busca no Google
+  - Criar invite
 - Para moderadores
-  _ Kick
-  _ Ban
-  _ Mute
-  _ Adicionar a um cargo
-  _ Remover de um cargo
-  _ Criar cargo
+  - Kick
+  - Ban
+  - Mute
+  - Adicionar a um cargo
+  - Remover de um cargo
+  - Criar cargo
 
 **Para ver como executar os comandos, digite $help ou $helpmod**
 
