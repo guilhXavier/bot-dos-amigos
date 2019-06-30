@@ -27,6 +27,15 @@ exports.run = msg => msg.channel.send({
 						'Esse comando vai te lembrar de qualquer coisa que voce escrever em *nota* no tempo que voce quiser',
       },
       {
+        name: '$google { termo de busca }',
+        value: 'Esse comando vai pesquisar um termo no google e retornar o primeiro link',
+      },
+      {
+        name: '$invite { *s | *m | *h }',
+        value:
+						'Esse comando vai criar um invite que pode ser usado ate 10 vezes, e vc tbm pode especificar quanto tempo ele vai ser valido',
+      },
+      {
         name: 'Para reportar problemas',
         value: 'Cria uma issue no [repo](https://github.com/guilhXavier/bot-dos-amigos) do bot',
       },
