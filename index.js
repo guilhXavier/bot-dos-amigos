@@ -57,6 +57,12 @@ client.on('message', async (msg) => {
   }
 });
 
+client.on('guildMemberAdd', async (guildMember) => {
+  const role = guildMember.guild.roles.find(val => val === 'alcateia');
+
+  await guildMember.addRole(role);
+});
+
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}`);
 });
