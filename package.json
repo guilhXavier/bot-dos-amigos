@@ -15,6 +15,7 @@
 		"discord.js-musicbot-addon": "^13.6.0",
 		"ffmpeg": "0.0.4",
 		"ms": "^2.1.2",
+		"node-emoji": "^1.10.0",
 		"nodemon": "^1.19.1",
 		"opusscript": "0.0.6",
 		"ytdl-core": "^0.29.2"

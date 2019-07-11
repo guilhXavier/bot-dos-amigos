@@ -8,14 +8,12 @@ Projetinho pessoal pro meu servidor no Discord, o Server Dos Amigos
   - Music player
   - Remind Me
   - Busca no Google
-  - Criar invite
+  - Invite
 - Para moderadores
   - Kick
   - Ban
   - Mute
-  - Adicionar a um cargo
-  - Remover de um cargo
-  - Criar cargo
+  - Management de cargos
 
 **Para ver como executar os comandos, digite $help ou $helpmod**
 

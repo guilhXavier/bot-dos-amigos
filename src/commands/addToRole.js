@@ -31,7 +31,7 @@ exports.run = (msg) => {
     embed: {
       color: 9699539,
       title: 'AddToRole',
-      description: `${alvo.displayName} foi adicionado ao cargo ${role.name}`,
+      description: `**${alvo.displayName}** foi adicionado ao cargo **${role.name}**`,
     },
   });
 };

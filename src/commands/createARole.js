@@ -24,7 +24,7 @@ exports.run = async (msg) => {
       embed: {
         color: 9699539,
         title: 'CreateARole',
-        description: `Cargo ${name} criado`,
+        description: `Cargo **${name}** criado`,
       },
     });
   } catch (error) {

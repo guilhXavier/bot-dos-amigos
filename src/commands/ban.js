@@ -15,7 +15,7 @@ exports.run = (msg) => {
     embed: {
       color: 9699539,
       title: 'Ban',
-      description: `${meliante.displayName} foi banido por ${reason || 'alguma razao'}`,
+      description: `**${meliante.displayName}** foi banido por ${reason || 'alguma razao'}`,
     },
   });
 };

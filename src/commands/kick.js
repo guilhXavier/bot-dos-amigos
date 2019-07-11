@@ -14,8 +14,8 @@ exports.run = (msg) => {
   return msg.channel.send({
     embed: {
       color: 9699539,
-      title: 'Unmute',
-      description: `${meliante.displayName} foi kickado por ${reason || 'alguma razao'}`,
+      title: 'Kick',
+      description: `**${meliante.displayName}** foi kickado por ${reason || 'alguma razao'}`,
     },
   });
 };
