@@ -13,7 +13,7 @@ exports.run = async (msg) => {
 
   const param = args[3] || args[1];
 
-  const lat = (args[1] !== 'a' && 'd') || '-29.8197';
+  const lat = (args[1] !== 'a' && args[1] !== 'd') || '-29.8197';
   const long = args[2] || '-51.1609';
 
   function checkParams(param) {
