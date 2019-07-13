@@ -1,5 +1,9 @@
 const axios = require('axios');
-const { GOOGLEAPI, CSEID } = require('../../config/config.json');
+const fs = require('fs');
+
+const checkConfig = fs.existsSync('./config/config.json');
+
+const { GOOGLEAPI, CSEID } = checkConfig ? require('../../config/config.json') : process.env;
 
 exports.run = async (msg) => {
   const args = msg.content.split(' ');
