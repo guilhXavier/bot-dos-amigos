@@ -36,6 +36,11 @@ exports.run = msg => msg.channel.send({
 						'Esse comando vai criar um invite que pode ser usado ate 10 vezes, e vc tbm pode especificar quanto tempo ele vai ser valido',
       },
       {
+        name: '$tempo { lat } { long } { a | d }',
+        value:
+						'Esse comando vai retornar a previsao do tempo atual ou diaria default: Sapucaia do Sul',
+      },
+      {
         name: 'Para reportar problemas',
         value: 'Cria uma issue no [repo](https://github.com/guilhXavier/bot-dos-amigos) do bot',
       },

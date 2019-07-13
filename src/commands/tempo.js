@@ -1,4 +1,4 @@
-/** $tempo { a | d }
+/** $tempo -30.2494 -50.0293 a
  * -29.8197,-51.1609
  */
 const axios = require('axios');
@@ -11,7 +11,10 @@ const { DARKSKYAPI } = checkConfig ? require('../../config/config.json') : proce
 exports.run = async (msg) => {
   const args = msg.content.split(' ');
 
-  const param = args[1];
+  const param = args[3] || args[1];
+
+  const lat = (args[1] !== 'a' && 'd') || '-29.8197';
+  const long = args[2] || '-51.1609';
 
   function checkParams(param) {
     switch (param) {
@@ -23,7 +26,7 @@ exports.run = async (msg) => {
     }
   }
 
-  const callURL = `https://api.darksky.net/forecast/${DARKSKYAPI}/-29.8197,-51.1609${checkParams(
+  const callURL = `https://api.darksky.net/forecast/${DARKSKYAPI}/${lat},${long}${checkParams(
     param,
   )}&lang=pt&units=auto`;
 

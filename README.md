@@ -5,6 +5,7 @@ Projetinho pessoal pro meu servidor no Discord, o Server Dos Amigos
 ## Features, ou o que o bot pode fazer por mim
 
 - Para users gerais
+	- Prev. do tempo
 	- Capitais - _WIP_
   - Music player
   - Remind Me

@@ -34,6 +34,10 @@ exports.run = msg => msg.channel.send({
         value: 'Esse comando vai criar um cargo com as opcoes que voce passou no comando',
       },
       {
+        name: '$moveTo { @membro } { canal de voz }',
+        value: 'Esse comando vai enviar um user ja conectado a um canal de voz para outro',
+      },
+      {
         name: 'Para reportar problemas',
         value: 'Cria uma issue no [repo](https://github.com/guilhXavier/bot-dos-amigos) do bot',
       },
