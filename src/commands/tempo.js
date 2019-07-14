@@ -2,6 +2,7 @@
  * -29.8197,-51.1609
  */
 const axios = require('axios');
+const { emojify } = require('node-emoji');
 const fs = require('fs');
 
 const checkConfig = fs.existsSync('./config/config.json');
@@ -16,7 +17,7 @@ exports.run = async (msg) => {
   const lat = (args[1] !== 'a' && args[1] !== 'd') || '-29.8197';
   const long = args[2] || '-51.1609';
 
-  function checkParams(param) {
+  function checkParam(param) {
     switch (param) {
       case 'a':
         return '?exclude=minutely,hourly,daily,alerts,flags';
@@ -26,9 +27,22 @@ exports.run = async (msg) => {
     }
   }
 
-  const callURL = `https://api.darksky.net/forecast/${DARKSKYAPI}/${lat},${long}${checkParams(
+  const callURL = `https://api.darksky.net/forecast/${DARKSKYAPI}/${lat},${long}${checkParam(
     param,
   )}&lang=pt&units=auto`;
+
+  const index = {
+    'clear-day': ':sunny:',
+    'clear-night': ':night_with_stars:',
+    rain: ':cloud_rain:',
+    snow: ':snowflake:',
+    sleet: ':cloud_snow:',
+    wind: ':wind_blowing_face:',
+    fog: ':fog:',
+    cloudy: ':cloud:',
+    'partly-cloudy-day': ':white_sun_cloud:',
+    'partly-cloudy-night': ':cloud:',
+  };
 
   try {
     const res = await axios(callURL);
@@ -36,13 +50,15 @@ exports.run = async (msg) => {
     const { data } = res;
 
     if (param === 'a') {
-      const { summary, temperature, apparentTemperature } = data.currently;
+      const {
+        summary, temperature, apparentTemperature, icon,
+      } = data.currently;
 
       return msg.channel.send({
         embed: {
           color: 9699539,
           title: 'Previsao do tempo atual :thermometer:',
-          description: `${summary}`,
+          description: `${summary} | ${emojify(index[icon])}`,
           fields: [
             {
               name: `**${temperature.toFixed(1)}°C**`,
@@ -57,13 +73,15 @@ exports.run = async (msg) => {
         },
       });
     }
-    const { summary, temperatureMin, temperatureMax } = data.daily.data[0];
+    const {
+      summary, temperatureMin, temperatureMax, icon,
+    } = data.daily.data[0];
 
     return msg.channel.send({
       embed: {
         color: 9699539,
         title: 'Previsao do tempo para o dia :thermometer:',
-        description: `${summary}`,
+        description: `${summary} | ${emojify(index[icon])}`,
         fields: [
           {
             name: `**${temperatureMax.toFixed(1)}°C**`,
