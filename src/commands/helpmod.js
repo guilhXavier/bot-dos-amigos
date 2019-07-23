@@ -42,5 +42,9 @@ exports.run = msg => msg.channel.send({
         value: 'Cria uma issue no [repo](https://github.com/guilhXavier/bot-dos-amigos) do bot',
       },
     ],
+    timestamp: new Date(),
+    footer: {
+      text: `Eu demorei ${Date.now() - msg.createdTimestamp} ms pra fazer essa busca`,
+    },
   },
 });

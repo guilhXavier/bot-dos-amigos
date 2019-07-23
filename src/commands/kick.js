@@ -16,6 +16,10 @@ exports.run = (msg) => {
       color: 9699539,
       title: 'Kick',
       description: `**${meliante.displayName}** foi kickado por ${reason || 'alguma razao'}`,
+      timestamp: new Date(),
+      footer: {
+        text: `Eu demorei ${Date.now() - msg.createdTimestamp} ms pra fazer essa busca`,
+      },
     },
   });
 };

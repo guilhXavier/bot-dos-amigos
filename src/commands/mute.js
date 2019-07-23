@@ -13,6 +13,10 @@ exports.run = (msg) => {
       color: 9699539,
       title: 'Mute',
       description: `${meliante.displayName} foi mutado por ${reason || 'alguma razao'}`,
+      timestamp: new Date(),
+      footer: {
+        text: `Eu demorei ${Date.now() - msg.createdTimestamp} ms pra fazer essa busca`,
+      },
     },
   });
 };
