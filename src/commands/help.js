@@ -46,9 +46,28 @@ exports.run = msg => msg.channel.send({
 						'Esse comando vai retornar uma strat aleatoria pra usar no game Counter-Strike: Global Offensive',
       },
       {
+        name: '$team { nome | id }',
+        value:
+						'Esse comando vai retornar infos da HLTV sobre um time particular mencionado pelo nome ou id',
+      },
+      {
+        name: '$ranking',
+        value: 'Esse comando retorna os top 5 times do ranking da HLTV',
+      },
+      {
+        name: '$match { id }',
+        value: 'Esse comando retorna infos sobre uma partida especifica da HLTV',
+      },
+      {
+        name: '$live { id }',
+        value:
+						'Acompanhe o score de uma partida da HLTV ao vivo (a partida tem que estar acontecendo no momento)',
+      },
+      {
         name: 'Para reportar problemas',
         value: 'Cria uma issue no [repo](https://github.com/guilhXavier/bot-dos-amigos) do bot',
       },
     ],
+    timestamp: new Date(),
   },
 });

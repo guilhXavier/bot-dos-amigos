@@ -16,6 +16,10 @@ exports.run = async (msg) => {
         color: 9699539,
         title: 'deleteRole',
         description: `O cargo **${res.name}** foi removido por ${reason}`,
+        timestamp: new Date(),
+        footer: {
+          text: `Eu demorei ${Date.now() - msg.createdTimestamp} ms pra fazer essa busca`,
+        },
       },
     });
   }
@@ -24,6 +28,10 @@ exports.run = async (msg) => {
       color: 9699539,
       title: 'deleteRole',
       description: 'Ocorreu algum erro',
+      timestamp: new Date(),
+      footer: {
+        text: `Eu demorei ${Date.now() - msg.createdTimestamp} ms pra fazer essa busca`,
+      },
     },
   });
 };

@@ -69,7 +69,11 @@ exports.run = async (msg) => {
               value: 'Sensacao Termica Atual',
             },
           ],
-          footer: { text: 'Leva um casaco bro' },
+          timestamp: new Date(),
+          footer: {
+            text: `Leva um casaco bro - Eu demorei ${Date.now()
+							- msg.createdTimestamp} ms pra fazer essa busca`,
+          },
         },
       });
     }
@@ -92,7 +96,11 @@ exports.run = async (msg) => {
             value: 'Minima',
           },
         ],
-        footer: { text: 'Leva um casaco bro' },
+        timestamp: new Date(),
+        footer: {
+          text: `Leva um casaco bro - Eu demorei ${Date.now()
+						- msg.createdTimestamp} ms pra fazer essa busca`,
+        },
       },
     });
   } catch (error) {

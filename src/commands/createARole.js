@@ -25,6 +25,10 @@ exports.run = async (msg) => {
         color: 9699539,
         title: 'CreateARole',
         description: `Cargo **${name}** criado`,
+        timestamp: new Date(),
+        footer: {
+          text: `Eu demorei ${Date.now() - msg.createdTimestamp} ms pra fazer essa busca`,
+        },
       },
     });
   } catch (error) {

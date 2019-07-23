@@ -16,6 +16,10 @@ exports.run = (msg) => {
       color: 9699539,
       title: 'Ban',
       description: `**${meliante.displayName}** foi banido por ${reason || 'alguma razao'}`,
+      timestamp: new Date(),
+      footer: {
+        text: `Eu demorei ${Date.now() - msg.createdTimestamp} ms pra fazer essa busca`,
+      },
     },
   });
 };
