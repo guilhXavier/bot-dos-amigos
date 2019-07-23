@@ -21,6 +21,7 @@ exports.run = async (msg) => {
         color: 9699539,
         title: 'Move To',
         description: `${alvo} foi movido ao canal ${canal.name}`,
+        timestamp: new Date(),
       },
     });
   }
@@ -36,6 +37,7 @@ exports.run = async (msg) => {
       color: 9699539,
       title: 'Move To',
       description: `${alvo} foi movido ao canal ${canal.name}`,
+      timestamp: new Date(),
     },
   });
 };

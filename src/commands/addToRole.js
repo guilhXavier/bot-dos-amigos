@@ -15,6 +15,10 @@ exports.run = (msg) => {
         color: 9699539,
         title: 'AddToRole',
         description: `${msg.member} foi adicionado ao cargo ${role.name}`,
+        timestamp: new Date(),
+        footer: {
+          text: `Eu demorei ${Date.now() - msg.createdTimestamp} ms pra fazer essa busca`,
+        },
       },
     });
   }
@@ -32,6 +36,10 @@ exports.run = (msg) => {
       color: 9699539,
       title: 'AddToRole',
       description: `**${alvo.displayName}** foi adicionado ao cargo **${role.name}**`,
+      timestamp: new Date(),
+      footer: {
+        text: `Eu demorei ${Date.now() - msg.createdTimestamp} ms pra fazer essa busca`,
+      },
     },
   });
 };
