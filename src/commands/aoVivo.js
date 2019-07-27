@@ -13,7 +13,7 @@ exports.run = async (msg) => {
       msg.channel.send({
         embed: {
           color: 9699539,
-          title: 'ScoreBot: Connection established',
+          title: 'ScoreBot: Conectado',
         },
       });
     },
@@ -22,7 +22,7 @@ exports.run = async (msg) => {
         msg.channel.send({
           embed: {
             color: 9699539,
-            title: `Match: ${team1.name} vs ${team2.name} | id: ${id}`,
+            title: `Partida: ${team1.name} vs ${team2.name} | id: ${id}`,
             fields: [
               {
                 name: 'Score',

@@ -46,7 +46,7 @@ exports.run = msg => msg.channel.send({
 						'Esse comando vai retornar uma strat aleatoria pra usar no game Counter-Strike: Global Offensive',
       },
       {
-        name: '$team { nome | id }',
+        name: '$time { nome | id }',
         value:
 						'Esse comando vai retornar infos da HLTV sobre um time particular mencionado pelo nome ou id',
       },
@@ -55,11 +55,16 @@ exports.run = msg => msg.channel.send({
         value: 'Esse comando retorna os top 5 times do ranking da HLTV',
       },
       {
-        name: '$match { id }',
+        name: '$partidasAoVivo',
+        value:
+						'Esse comando retorna o link e o ID das partidas ao vivo na HLTV, caso voce nao queira acessar o site pra pegar o id',
+      },
+      {
+        name: '$partida { id }',
         value: 'Esse comando retorna infos sobre uma partida especifica da HLTV',
       },
       {
-        name: '$live { id }',
+        name: '$aoVivo { id }',
         value:
 						'Acompanhe o score de uma partida da HLTV ao vivo (a partida tem que estar acontecendo no momento)',
       },

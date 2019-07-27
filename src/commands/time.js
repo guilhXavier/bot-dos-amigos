@@ -37,7 +37,7 @@ exports.run = async (msg) => {
           value: `${rank}`,
         },
         {
-          name: `Location ${emojify(':map:')}`,
+          name: `Local ${emojify(':map:')}`,
           value: `${location}`,
         },
         {
@@ -49,7 +49,7 @@ exports.run = async (msg) => {
 					${players[4].name}`,
         },
         {
-          name: 'Recent Results',
+          name: 'Ultimos resultados',
           value: `${recentResults[0].result} | id ${recentResults[0].matchID}\n
 					${recentResults[1].result} | id ${recentResults[1].matchID}\n
 					${recentResults[2].result} | id ${recentResults[2].matchID}\n
