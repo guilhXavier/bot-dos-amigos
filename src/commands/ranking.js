@@ -9,7 +9,7 @@ exports.run = async (msg) => {
     embed: {
       color: 9699539,
       author: {
-        name: 'HLTV Ranking',
+        name: 'Ranking da HLTV',
       },
       description: `1. ${res[0].team.name} - ${res[0].points} points ${emojify(':first_place:')}\n
 										2. ${res[1].team.name} - ${res[1].points} points ${emojify(':second_place:')}\n

@@ -46,19 +46,19 @@ exports.run = async (msg) => {
 				|| `${new Date(date).toLocaleDateString('pt')} - ${status}`,
       fields: [
         {
-          name: `Teams ${emojify(':crossed_flags:')}`,
+          name: `Times ${emojify(':crossed_flags:')}`,
           value: `${team1.name} vs ${team2.name}`,
         },
         {
-          name: `Winner ${emojify(':crown:')}`,
+          name: `Vencedor ${emojify(':crown:')}`,
           value: `${winnerTeam.name}`,
         },
         {
-          name: `Format ${emojify(':straight_ruler:')}`,
+          name: `Formato ${emojify(':straight_ruler:')}`,
           value: `${format}`,
         },
         {
-          name: `Event ${emojify(':trophy:')}`,
+          name: `Evento ${emojify(':trophy:')}`,
           value: `${event.name}`,
         },
         {
