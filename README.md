@@ -12,6 +12,7 @@ Projetinho pessoal pro meu servidor no Discord, o Server Dos Amigos
   - Remind Me
   - Busca no Google
   - Gerador de invite
+	- Lista de partidas ao vivo na HLTV
   - Score ao vivo de partidas da HLTV
   - Infos da HLTV(partidas, times, ranking)
 - Para moderadores
