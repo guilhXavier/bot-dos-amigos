@@ -1,20 +1,13 @@
-/* eslint-disable import/no-dynamic-require */
-/* eslint-disable global-require */
+require('dotenv').config();
+
 const Discord = require('discord.js');
-const fs = require('fs');
-
-const checkConfig = fs.existsSync('./config/config.json');
-
-const { GOOGLEAPI, PREFIX, BOT_TOKEN } = checkConfig
-  ? require('./config/config.json')
-  : process.env;
 
 const client = new Discord.Client();
 
 client.music = require('discord.js-musicbot-addon');
 
 client.music.start(client, {
-  youtubeKey: GOOGLEAPI,
+  youtubeKey: process.env.GOOGLEAPI,
   anyoneCanSkip: true,
 });
 
@@ -28,7 +21,7 @@ client.on('message', async (msg) => {
 
   if (msg.author.bot) return;
 
-  if (!msg.content.startsWith(PREFIX)) return;
+  if (!msg.content.startsWith(process.env.PREFIX)) return;
 
   try {
     switch (cmd) {
@@ -67,4 +60,4 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}`);
 });
 
-client.login(BOT_TOKEN).catch(err => console.log(err));
+client.login(process.env.BOT_TOKEN).catch(err => console.log(err));

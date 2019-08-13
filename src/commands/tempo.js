@@ -1,13 +1,10 @@
 /** $tempo -30.2494 -50.0293 a
  * -29.8197,-51.1609
  */
+require('dotenv').config();
+
 const axios = require('axios');
 const { emojify } = require('node-emoji');
-const fs = require('fs');
-
-const checkConfig = fs.existsSync('./config/config.json');
-
-const { DARKSKYAPI } = checkConfig ? require('../../config/config.json') : process.env;
 
 exports.run = async (msg) => {
   const args = msg.content.split(' ');
@@ -17,8 +14,8 @@ exports.run = async (msg) => {
   const lat = (args[1] !== 'a' && args[1] !== 'd') || '-29.8197';
   const long = args[2] || '-51.1609';
 
-  function checkParam(param) {
-    switch (param) {
+  function checkParam(p) {
+    switch (p) {
       case 'a':
         return '?exclude=minutely,hourly,daily,alerts,flags';
       case 'd':
@@ -27,9 +24,9 @@ exports.run = async (msg) => {
     }
   }
 
-  const callURL = `https://api.darksky.net/forecast/${DARKSKYAPI}/${lat},${long}${checkParam(
-    param,
-  )}&lang=pt&units=auto`;
+  const callURL = `https://api.darksky.net/forecast/${
+    process.env.DARKSKYAPI
+  }/${lat},${long}${checkParam(param)}&lang=pt&units=auto`;
 
   const index = {
     'clear-day': ':sunny:',

@@ -1,9 +1,6 @@
+require('dotenv').config();
+
 const axios = require('axios');
-const fs = require('fs');
-
-const checkConfig = fs.existsSync('./config/config.json');
-
-const { GOOGLEAPI, CSEID } = checkConfig ? require('../../config/config.json') : process.env;
 
 exports.run = async (msg) => {
   const args = msg.content.split(' ');
@@ -13,7 +10,9 @@ exports.run = async (msg) => {
 
   try {
     const res = await axios(
-      `https://www.googleapis.com/customsearch/v1?key=${GOOGLEAPI}&cx=${CSEID}&q=${suffix}&lr=lang_pt&num=1`,
+      `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLEAPI}&cx=${
+        process.env.CSEID
+      }&q=${suffix}&lr=lang_pt&num=1`,
     );
 
     const { data } = res;

@@ -17,8 +17,9 @@ exports.run = (msg) => {
 
       liveMatches.forEach((val) => {
         fields.push({
-          name: `${val.attribs['data-livescore-match']}`,
-          value: `${val.attribs.href}`,
+          name: 'Partida',
+          value: `${val.attribs.href}\n
+					${val.attribs['data-livescore-match']}`,
         });
       });
 
