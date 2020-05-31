@@ -1,14 +1,19 @@
-// $addToRole @NickBola#233 bott
-exports.run = (msg) => {
-  const server = msg.guild;
-  const args = msg.content.split(' ');
+// $addtr -m @NickBola#123 -c @cargoExistente
 
-  if (msg.mentions.members.size === 0) {
-    args.splice(0, 1);
+import { extractArgs } from '../helpers'
+import { COMMAND_FLAGS } from '../constants/commands'
 
-    const role = server.roles.find(val => val.name === args.join(' '));
+export const addToRole = ({ guild, content, member, mentions }) => {
+  const { args } = extractArgs(content)
 
-    msg.member.addRole(role);
+  if (!mentions.members.size) {
+    const { cache: rolesList } = guild.roles
+
+    const role = rolesList.find(
+      (elem) => elem.name === args[COMMAND_FLAGS.ROLE]
+    )
+
+    member.roles.add(role)
 
     return msg.channel.send({
       embed: {
@@ -17,19 +22,21 @@ exports.run = (msg) => {
         description: `${msg.member} foi adicionado ao cargo ${role.name}`,
         timestamp: new Date(),
         footer: {
-          text: `Eu demorei ${Date.now() - msg.createdTimestamp} ms pra fazer essa busca`,
+          text: `Eu demorei ${
+            Date.now() - msg.createdTimestamp
+          } ms pra fazer essa busca`,
         },
       },
-    });
+    })
   }
 
-  args.splice(0, 2);
+  args.splice(0, 2)
 
-  const role = server.roles.find(val => val.name === args.join(' '));
+  const role = server.roles.find((val) => val.name === args.join(' '))
 
-  const alvo = msg.mentions.members.first(1)[0];
+  const alvo = msg.mentions.members.first(1)[0]
 
-  alvo.addRole(role);
+  alvo.addRole(role)
 
   return msg.channel.send({
     embed: {
@@ -38,8 +45,10 @@ exports.run = (msg) => {
       description: `**${alvo.displayName}** foi adicionado ao cargo **${role.name}**`,
       timestamp: new Date(),
       footer: {
-        text: `Eu demorei ${Date.now() - msg.createdTimestamp} ms pra fazer essa busca`,
+        text: `Eu demorei ${
+          Date.now() - msg.createdTimestamp
+        } ms pra fazer essa busca`,
       },
     },
-  });
-};
+  })
+}

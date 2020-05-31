@@ -1,25 +1,30 @@
 // $ban @NickBola#233 ser inconveniente
 exports.run = (msg) => {
-  const args = msg.content.split(' ');
-  args.splice(0, 2);
+  const args = msg.content.split(' ')
+  args.splice(0, 2)
 
-  const reason = args.join(' ');
+  const reason = args.join(' ')
 
-  const meliante = msg.mentions.members.first(1)[0];
+  const meliante = msg.mentions.members.first(1)[0]
 
-  if (!meliante.bannable) return msg.channel.send(`Nn consigo banir ${meliante.displayName}`);
+  if (!meliante.bannable)
+    return msg.channel.send(`Nn consigo banir ${meliante.displayName}`)
 
-  meliante.ban(reason).catch(err => console.log(err));
+  meliante.ban(reason).catch((err) => console.log(err))
 
   return msg.channel.send({
     embed: {
       color: 9699539,
       title: 'Ban',
-      description: `**${meliante.displayName}** foi banido por ${reason || 'alguma razao'}`,
+      description: `**${meliante.displayName}** foi banido por ${
+        reason || 'alguma razao'
+      }`,
       timestamp: new Date(),
       footer: {
-        text: `Eu demorei ${Date.now() - msg.createdTimestamp} ms pra fazer essa busca`,
+        text: `Eu demorei ${
+          Date.now() - msg.createdTimestamp
+        } ms pra fazer essa busca`,
       },
     },
-  });
-};
+  })
+}
