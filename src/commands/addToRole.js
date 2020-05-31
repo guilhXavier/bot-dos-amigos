@@ -1,54 +1,55 @@
 // $addtr -m @NickBola#123 -c @cargoExistente
 
-import { extractArgs } from '../helpers'
-import { COMMAND_FLAGS } from '../constants/commands'
+import { extractArgs, buildRichEmbed } from '../helpers'
+import { COMMAND_FLAGS, EMBED_COLORS, EMBED_TYPES } from '../constants'
 
-export const addToRole = ({ guild, content, member, mentions }) => {
-  const { args } = extractArgs(content)
+export const addToRole = async ({
+  channel,
+  content,
+  createdTimestamp,
+  guild,
+  member,
+  mentions: { members: mentionedMembers },
+}) => {
+  const { command, args } = extractArgs(content)
 
-  if (!mentions.members.size) {
-    const { cache: rolesList } = guild.roles
-
-    const role = rolesList.find(
-      (elem) => elem.name === args[COMMAND_FLAGS.ROLE]
+  const target = getMember(
+    member,
+    mentionedMembers.find(
+      ({ displayName }) => displayName === args[COMMAND_FLAGS.MEMBER]
     )
+  )
 
-    member.roles.add(role)
+  const { cache: rolesList } = guild.roles
 
-    return msg.channel.send({
-      embed: {
-        color: 9699539,
-        title: 'AddToRole',
-        description: `${msg.member} foi adicionado ao cargo ${role.name}`,
-        timestamp: new Date(),
-        footer: {
-          text: `Eu demorei ${
-            Date.now() - msg.createdTimestamp
-          } ms pra fazer essa busca`,
-        },
-      },
-    })
-  }
+  const role = rolesList.find((elem) => elem.name === args[COMMAND_FLAGS.ROLE])
 
-  args.splice(0, 2)
+  try {
+    await target.roles.add(role)
 
-  const role = server.roles.find((val) => val.name === args.join(' '))
-
-  const alvo = msg.mentions.members.first(1)[0]
-
-  alvo.addRole(role)
-
-  return msg.channel.send({
-    embed: {
-      color: 9699539,
-      title: 'AddToRole',
-      description: `**${alvo.displayName}** foi adicionado ao cargo **${role.name}**`,
-      timestamp: new Date(),
+    const embed = buildRichEmbed({
+      description: `${member} foi adicionado ao cargo ${role.name}`,
       footer: {
         text: `Eu demorei ${
-          Date.now() - msg.createdTimestamp
+          Date.now() - createdTimestamp
         } ms pra fazer essa busca`,
       },
-    },
-  })
+      hexColor: EMBED_COLORS.PURPLE,
+      timestamp: new Date(),
+      title: command,
+      type: EMBED_TYPES.RICH,
+    })
+
+    return channel.send('Sucesso!', { embed })
+  } catch (error) {
+    return channel.send('Ocorreu um erro! :(')
+  }
+}
+
+const getMember = (member, mentionedMember) => {
+  if (!mentionedMember) {
+    return member
+  }
+
+  return mentionedMember
 }
