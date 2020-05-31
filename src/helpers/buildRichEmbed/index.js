@@ -3,7 +3,6 @@ export const buildRichEmbed = ({
   fields,
   footer,
   hexColor,
-  timestamp,
   title,
   type,
 }) => {
@@ -12,7 +11,7 @@ export const buildRichEmbed = ({
     fields,
     footer,
     hexColor,
-    timestamp,
+    timestamp: new Date(),
     title,
     type,
   }
