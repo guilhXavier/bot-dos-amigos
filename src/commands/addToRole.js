@@ -35,7 +35,6 @@ export const addToRole = async ({
         } ms pra fazer essa busca`,
       },
       hexColor: EMBED_COLORS.PURPLE,
-      timestamp: new Date(),
       title: command,
       type: EMBED_TYPES.RICH,
     })
