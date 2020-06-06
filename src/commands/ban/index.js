@@ -1,7 +1,7 @@
 // $ban -m @NickBola#233 -t 7
 
-import { COMMAND_FLAGS, EMBED_COLORS, EMBED_TYPES } from '../constants'
-import { buildRichEmbed } from '../helpers'
+import { COMMAND_FLAGS, EMBED_COLORS, EMBED_TYPES } from '../../constants'
+import { buildRichEmbed } from '../../helpers'
 
 export const ban = async ({ channel, content, createdTimestamp, mentions }) => {
   const { command, args } = extractArgs(content)

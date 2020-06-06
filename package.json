@@ -1,16 +1,16 @@
 {
   "name": "discord-bot-dos-amigos",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Bot do server dos amigos ",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node index.js",
+    "dev": "nodemon --exec babel-node ./src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Guilherme Xavier",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.5.1",
+    "discord.js": "^12.0.0",
     "ms": "^2.1.2",
     "node-emoji": "^1.10.0"
   },

@@ -3,3 +3,5 @@ export const COMMAND_FLAGS = {
   ROLE: '-r',
   TIME: '-t',
 }
+
+export const PREFIX = '$'

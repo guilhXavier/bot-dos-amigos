@@ -1,11 +1,14 @@
-export const cmdParser = (cmd) => {
-  const matches = cmd.match(/-[a-z]\s[A-Za-z1-9#@]*/g)
+import { popFirst } from '../popFirst'
 
-  const matchesNoAt = matches.map((elem) => elem.replace('@', ''))
+export const cmdParser = (cmd) => {
+  const matches = cmd
+    .replace(/[@<>!&]/g, '')
+    .match(/-[a-z]\s[A-Za-z0-9#@<>&!\s]*/g)
 
   return Object.fromEntries(
-    matchesNoAt.map((elem) => {
+    matches.map((elem) => {
       const destructCmd = elem.split(' ')
+
       return [...destructCmd]
     })
   )
